@@ -1,0 +1,241 @@
+%|============================================================================|
+%| Bachelor Arbeit Frederik Eberhard am Institut ieet                         |
+%|============================================================================|
+
+% ---- Definition der Dokumenteneigenschaften ----
+\documentclass[
+              11pt,								  % Schriftgröße
+              twoside,                              % Beidseitig (für einseiteig "oneside"')
+              numbers=noenddot,                     % Kapitelnummern etc. haben keinen "Endpunkt", vorher Kap. 2.2., jetzt Kap. 2.2
+              listof=totoc,                         % Fügt Abbildungs- und Tabellenverzeichnis zum Inhaltsverzeichnis zu
+              bibliography=totoc,                   % Fügt das Literaturverzeichnis zum Inhaltsverzeichnis zu
+              captions=tableheading, % Stellt den Abstand zwischen Tabellenüberschrift her, sonst einfach mit \captionabove
+              %parskip=half-                        % Absätze werden durch einen vertikalen Abstand von einer halben Zeile gekennzeichnet. Absatzenden werden nicht gekennzeichnet.
+              openright,							% Kapitel werden bei beidseitigem Druck rechts begonnen
+              ]{scrreprt}                           % KOMA-Klasse für "report" (BA/MA/Dipl.-Arbeiten)
+\input{Kapitel/Einstellungen}
+\input{Kapitel/Packages}
+
+%|============================================================================|
+%|                      Anfang des Dokuments                                  |
+%|============================================================================|
+\begin{document}
+\sisetup{range-phrase= \,--\,}
+\sisetup{range-units=single}
+\sisetup{detect-all}
+\pagenumbering{alph}  % zählt die ersten Seiten (Deckblatt - Aufgabenstellung) mit Buchstaben durch.
+					  % Das verhindert, dass beim Druck der Seite 1 das Deckblatt und nicht die erste Seite der Einleitung gedruckt wird											
+									
+%| Deckblatt
+\include{Kapitel/Deckblatt}
+
+%| Titelseite
+\thispagestyle{plain}                          % keinen Header für Deckblatt
+\input{Kapitel/Titelseite}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+%| Fußnoten
+\setlength{\parindent}{0pt}                    % Verhindert Einrückes des Textes nach Absätzen, Abb./ Tab./ Formeln
+\setlength{\footnotesep}{9pt}                  % Legt den Abstand zwischen zwei Fußnotentexten am unteren Seitenrand fest
+
+
+%| Kopfzeile
+\pagestyle{scrheadings}                        % Eigene Kopfzeile
+  %\clearscrheadfoot                            % Löscht bisherige Kopfzeilen
+  \clearpairofpagestyles
+  \automark[section]{chapter}                  % Automatischen makieren [Rechte Seite]{Linke Seite}
+  \ihead[]{\leftmark}                          % inner(oben) = linke Seite
+  \ohead[]{\rightmark}                         % outer(oben) = rechte Seite
+  \ohead[\pagemark]{\pagemark}                 % outer(oben) = die Seitenzahl immer außen
+  \KOMAoptions{headsepline=true, headsepline=0.4pt}  % Erstellt eine Linie in Kopfzeile unter der Seitennummer etc.
+
+
+%| Zeilenabstand
+\doublespacing                             	   % 2-facher Zeilenabstand
+
+
+\thispagestyle{empty}                  
+\includepdf[offset= -25 -15]{Kapitel/Aufgabenstellung.pdf}		% eventuell sind hier die Offsets anders zu setzen.
+
+\newpage
+\thispagestyle{empty}
+\cleardoublepage 
+
+%| ~ Anmk: Ab hier werden Seitenzahlen gezählt
+\pagenumbering{roman}                                 						% Römische Seitenzahlen bis Beginn des Inhalts
+
+%/Kurzfassung
+\input{Kapitel/Kurzfassung}
+\setlength{\headheight}{22.00473pt}
+\setlength{\footheight}{22.00473pt}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+
+%/Abstract
+\input{Kapitel/Abstract}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+% ---- optional ---- 
+%/Danksagung
+\ifthenelse{\equal{\MitDanksagung}{1}}{
+\input{Kapitel/Danksagung}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage}{}
+
+
+%|============================================================================|
+%| Verzeichnisse                                                              |
+%|============================================================================|
+
+%| Inhaltsverzechnis
+\tableofcontents       % Erstellt automatisch ein Inhaltsverzeichnis
+
+\newpage
+\thispagestyle{empty}
+\cleardoublepage
+\pagestyle{plain}
+%/ Abkürzungsverzeichnis
+\chapter*{List of Abbreviations}                       
+\input{Kapitel/abkuerzungen.tex}
+\newpage
+\thispagestyle{empty}
+\cleardoublepage 
+
+%/Formelzeichen
+\section*{List of Symbols}             
+\input{Kapitel/formelzeichen.tex}
+\newpage
+\thispagestyle{empty}
+\cleardoublepage 
+
+%| Kopfzeile
+\pagestyle{scrheadings}                        % Eigene Kopfzeile
+\clearpairofpagestyles                            % Löscht bisherige Kopfzeilen
+\automark[section]{chapter}                  % Automatischen makieren [Rechte Seite]{Linke Seite}
+\ihead[]{\leftmark}                          % inner(oben) = linke Seite
+\ohead[]{\rightmark}                         % outer(oben) = rechte Seite
+\ohead[\pagemark]{\pagemark}                 % outer(oben) = die Seitenzahl immer außen
+\KOMAoptions{headsepline=true,       % Syntax error corrected 8.2.2020
+            headsepline=0.4pt}
+%\setheadsepline{.4pt}                        % Erstellt eine Linie in Kopfzeile unter der Seitennummer etc.
+
+%|============================================================================|
+%| Einbinden der Kapitel                                                      |
+%|============================================================================|
+
+\pagenumbering{arabic}	% Vorher römische Seitenzahlen, ab hier arabische. Fängt automatisch wieder bei 1 an
+
+%/Einleitung
+\input{Kapitel/Einleitung}	% einfügen von inhalt/inhalt.tex
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+%/Kapitel2
+\input{Kapitel/Kapitel2}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+%/Kapitel3
+\input{Kapitel/Kapitel3}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+%/Kapitel4
+\input{Kapitel/Kapitel4}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+%/Zusammenfassung und Ausblick
+\input{Kapitel/ZusammenfassungundAusblick}
+\newpage
+\thispagestyle{empty} 
+\cleardoublepage
+
+%|============================================================================|
+%| Literaturverzeichnisse und Anhang                                          |
+%|============================================================================|
+
+%| Literaturverzeichnis 
+\ifthenelse{\equal{\Sprache}{0}}
+	{\bibliographystyle{StyleBib/IEEEtrans_DE.bst} % deutsches Lit.verzeichnis
+	}{}
+\ifthenelse{\equal{\Sprache}{1}}
+	{\bibliographystyle{StyleBib/IEEEtrans_EN.bst} % englisches Lit.verzeichnis 
+	}{}
+\phantomsection %-> damit hyperref den Link richtig auf die erste Seite vom Literaturverzeichnis legt
+% \ifthenelse{\equal{\Sprache}{0}}
+% 	{\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+% 	}{}
+% \ifthenelse{\equal{\Sprache}{1}}
+% 	{\addcontentsline{toc}{chapter}{Bibliography}
+% 	}{}
+%\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{Literatur/literatur}
+
+%\printbibliography	% Erzeugt die bibliographie nach den für das Package 'biblatex' definierten Kriterien
+\newpage
+\thispagestyle{empty}
+\cleardoublepage				 
+
+%| Anhang
+%-------------
+
+%Abbildungsverzeichnis
+\listoffigures	% erstellt automatisch ein Abbildungsverzeichnis
+\newpage
+\thispagestyle{empty}
+\cleardoublepage                                         	
+
+% Tabellenverzeichnis
+\listoftables	% erstellt automatisch ein Tabellenverzeichnis
+\newpage
+\thispagestyle{empty}
+\cleardoublepage
+
+\begin{appendices}
+\input{Kapitel/anhang.tex}	% Einbinden des Anhangs
+\end{appendices}
+\newpage
+\thispagestyle{empty}
+\cleardoublepage
+% // Ende: Anhang //
+
+
+%| Eigenständigkeitserklärung
+%------------------------------
+
+\section*{Eidesstattliche Erklärung}	% durch das sternchen taucht die eigenständigkeitserklärung nicht im inhaltsverzeichnis auf
+\vspace{1cm}
+\thispagestyle{empty}
+
+Hiermit erkläre ich, \VornameDesStudenten \ \NachnameDesStudenten, dass ich die vorliegende 
+        \ifthenelse{\equal{\MScBSc}{0}}
+			{Bachelorarbeit}{}
+		\ifthenelse{\equal{\MScBSc}{1}}
+			{Projektarbeit}{}
+		\ifthenelse{\equal{\MScBSc}{2}}
+			{Masterarbeit}{} selbstständig und nur unter Verwendung der angegebenen Literatur und Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt übernommenen Stellen sind als solche kenntlich gemacht. 
+Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht. 
+\\
+\\
+\par
+
+\Ort, \today  \hfill \hrulefill
+
+\hfill \VornameDesStudenten \ \NachnameDesStudenten \hfill
+
+\end{document}
+%|============================================================================|
+%| Ende des Dokuments                                                         |
+%|============================================================================|

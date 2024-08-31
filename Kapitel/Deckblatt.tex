@@ -1,0 +1,40 @@
+% !TeX root =../main.tex
+%###########################################################################
+%
+%   Titelseite
+%
+%###########################################################################
+\begin{titlepage}
+% Konfiguration des Deckblatts
+\thispagestyle{empty}
+
+% Einfügen des Hintergrunds
+\tikz[remember picture,overlay] \node[opacity=1.0,inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{Bilder/Bild1.png}};
+
+% Inlcude TUHH-Logo and IEET-Logo
+\begin{minipage}{.5\textwidth}
+\ifthenelse{\equal{\Sprache}{0}}{
+\includegraphics[height=50pt]{Bilder/TUHH_logo-wortmarke_de_rgb.png}
+}{\includegraphics[height=50pt]{Bilder/TUHH_logo-wortmarke_de_rgb.png}}
+\end{minipage}% This must go next to `\end{minipage}`
+\begin{minipage}{.5\textwidth}
+\begin{flushright}
+\ifthenelse{\equal{\Sprache}{0}}{\includegraphics[height=45pt]{Bilder/office_rgb_ieet_de.png}}{\includegraphics[height=50pt]{Bilder/office_rgb_ieet_en.png}}
+\end{flushright}
+\end{minipage}
+
+% Titel der Arbeit
+%\hspace{1cm}\\ % muss hier stehen ansonsten wird der vspace nicht akzeptiert
+\begin{center}
+		\vspace{5cm}
+		{\ifthenelse{\equal{\Sprache}{0}}{\DeutscherTitelDerArbeit}{\EnglischerTitelDerArbeit}
+		\Large{\textbf{}}}
+	\end{center}
+	\begin{center}
+		{\textbf{\VornameDesStudenten \ \NachnameDesStudenten}}
+\end{center}
+
+\end{titlepage}
+\clearpage
+\thispagestyle{empty}
+\cleardoublepage

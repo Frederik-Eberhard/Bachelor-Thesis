@@ -1,0 +1,216 @@
+%|============================================================================|
+%| Pakete und Einstellungen                                                   |
+%|============================================================================|
+
+% ---- Eigene Packages----
+\usepackage[colorinlistoftodos]{todonotes}
+% ------------------------
+
+\usepackage{ifthen}
+
+% ---- Spracheinstellungen ----
+%\usepackage[ngerman]{babel}		% Neue dt. Rechtschreibung, Silbentrennung (auch im Literaturverzeichnis)
+\ifthenelse{\equal{\Sprache}{0}}
+	{\usepackage[ngerman]{babel}
+	\usepackage[ngerman]{isodate}
+     \usepackage{ziffer} % Stellt sicher, dass im Deutschen keine Spaces zwischen Kommas in Zahlen vorkommen (1, 155 wird 1,155}
+	}{}
+\ifthenelse{\equal{\Sprache}{1}}
+	{\usepackage[ngerman,english]{babel}
+	\usepackage[ngerman,english]{isodate}
+	}{}
+
+
+\usepackage[utf8]{inputenc}		% Deutsche Sonderzeichen/ Umlaute
+\usepackage{helvet}             % Schriftart Helvetiva
+% Schriftart Helvetica für Überschriften und Text
+\renewcommand\familydefault{phv}
+\usepackage{csquotes}
+\usepackage[T1]{fontenc}        % Stellt sicher, dass im PDF Umlaute gefunden werden
+\usepackage{textcomp}           % Zusätzliche Symbole
+\usepackage{setspace}
+\setlength{\emergencystretch}{2em}		% erlaubt größeren Leerraum zwischen Wörtern, damit bei Blocksatz besser umgebrochen werden kann (reduziert overfull\hbx-Meldungen)
+%In diesem Package lassen sich Silbentrennungen für Zeilenumbrüche von unbekannten Wörtern definieren
+\hyphenchar\font=\string"7F
+\hyphenation{Wirk-leis-tungs-un-gleich-ge-wicht Mo-men-tan-re-ser-ve}					
+
+
+% ---- Mathe, Physik etc. ----
+\usepackage[
+            fleqn                                     % Linksbündige Formeln
+            ]{amsmath}                                % Zur Abbildung der mathematischen Symbole und Formeln
+\usepackage[fixamsmath,disallowspaces]{mathtools}     % Erweitert amsmath und behebt einige Fehler
+\usepackage{nccmath}
+\usepackage{amsfonts}                                 % Mathematische Schriftarten
+\usepackage{array} 									  % array-Umgebung (für Matrizen etc)
+\usepackage{bm} 		% Fett schreiben im Mathemodus über \bm
+%\sisetup{locale = DE}
+\usepackage{siunitx}	% sorgt für eine korrekte Darstellung von Einheiten; Umwandlung in andere Systeme als SI möglich
+%\usepackage{ziffer}   	% Verhindert den kleinen Platz nach Kommas im Mathemodus
+\ifthenelse{\equal{\Sprache}{0}}{\sisetup{locale = DE}}{\sisetup{locale = EN}}
+
+
+% ---- Kopfzeile ----
+% Seitenstil, verhindert nur Großbuchstaben im Header, "plainheadsepline" erstellt auch eine Linie bei Chapter
+\usepackage[automark, plainheadsepline, headsepline]{scrlayer-scrpage}
+
+
+% ---- Abbildungen ----
+\usepackage[
+           singlelinecheck=false,	% Linksbündige Captions
+           labelfont=bf
+           ]
+           {caption}[2008/08/24]	% Erzeugt eine numerierte Bemerkung innerhalb der figure- und table-Umgebungen
+\usepackage{subcaption}				% Captions für Unterbilder
+\usepackage{graphicx,psfrag}        % Einbindung von Abbildungen, EPS Benutzung
+\usepackage{flafter} 				% Verhindert, dass eine Abbildung im Text vor der ersten Nennung auftaucht
+																																		 
+
+\usepackage{here}       % Zum erzwingen der Bildplatzierung mit [H] (am besten nicht erzwingen sondern fließen lassen und nur machen wenn der satzspiegel einer Seite gut ist!!)
+\usepackage{epstopdf}   % Wandelt *.eps-Dateien on the fly in PDF´s um, damit die Konvertierung direkt in PDF klappt
+
+
+% ---- Gleitparamter für optimales Gleiten von Abb. und Tab. ----
+\setcounter{topnumber}               {1}
+    \setcounter{bottomnumber}        {1}
+    \renewcommand{\floatpagefraction}{0.8}
+    \renewcommand{\topfraction}      {0.8}
+    \renewcommand{\bottomfraction}   {0.5}
+    \renewcommand{\textfraction}     {0.15}
+    \makeatletter
+      \setlength{\@fptop}{0pt}
+    \makeatother
+
+	
+% ---- Fussnoten ----
+\usepackage{chngcntr}             	% Erlaubt das Erstellen und Ändern eigener Counter
+\counterwithout{footnote}{chapter}  % Lässt die Nummerierung der Fußnoten auch über Kapitel hinweg fortlaufen, wenn nach jedem neuen Kapitel bei 1 angefangen werden soll -> auskomemntieren
+\usepackage{footmisc}               % Fußote eingerückt, in der nächsten Zeile wieder linksbündig0
+
+
+% ---- ANHANG ----
+\usepackage[toc,page,title,header]{appendix} 			%toc: Anhang wird im Inhaltsverzeichnis gezeigt
+\addto\captionsngerman{\let\appendixtocname\appendixname
+\let\appendixpagename\appendixname} 					%Das deutsche Wort Anhang wird statt Appendix angezeigt
+
+
+% ---- Abkürzungen ----
+\usepackage{acronym} % Abkürzungen werden in der Datei 'abkuerzungen.tex' definiert
+% \acro{Kurzname}{Langname} in der Umgebung \begin{acronym} (s. Datei)
+% Bsp.: \acro{WKA}{Windkraftanlage}
+% Im Text schreibt man statt 'WKA' '\ac{WKA}'. An der Stelle des ersten Aurufs steht
+% automatisch Windkraftanlage (WKA) und ab da an nur noch WKA
+% Der Plural von Abkürzungen wird mit \acp aufgerufen. Wenn der Plural des Wortes nicht
+% durch ein 's' erzeugt wird (englisches Package) muss er gesondert definiert werden
+% \acrodefplural{WKA}[WKA]{Windkraftanlagen} - der Plural von WKA wird hier ebenfalls mit WKA
+% abgekürzt.
+
+
+% ---- Verwaiste Zeilen ----
+\usepackage[all]{nowidow}	% Verhindert, dass eine einzelne Zeile (Waisenzeile) am Ende einer Seite (nach einem Absatz), bzw. am Anfang einer Seite (zum Ende eines Absatzes) auftaucht
+
+% ---- TABELLEN ----
+\usepackage{color}					% für Farben im allgemeinen
+\usepackage{colortbl}				% für die Hintergrundfarbe einzelner Zellen in Tabellen
+\usepackage{multirow}				% Erlaubt es, innerhalb einer Tabelle mehrzeilige/spaltige Zellen zu erstellen
+\usepackage{rotating}				% Schrift in Tabellen vertikal ausrichten durch \begin{sideways} TEXT \end{sideways}
+\usepackage{tabularx} 				% Tabellen mit variabel breiten Spalten (gekennzeichnet durch X), so dass die Tabelle immer auf die Breite der Seite gestreckt wird
+\usepackage{xltabular}              % Tabellen brechen selbstständig und verlaufen über mehrere Seiten
+
+% ---- LITERATURVERZEICHNIS ----
+% Das Literaturverzeichnis wird über biblatex mit dem Backend biber erstellt.
+% Die Literatur wird in der Datei literatur.bib abgelget, die bspw. mit JabRef bearbeitet werden kann
+% Um die Datei richtig kompilieren zu können, muss die Art der Bibliographie (Biblographie->Art) auf biblatex gestellt sein
+% Außerdem muss unter (Optionen->Texstudio konfigurieren->Erzeugen) das Standard Bibliographieprogramm auf 'Biber' gestellt sein.
+% In anderen Latex-Umgebungen sollten sich ähnliche Einstellungen finden lassen
+
+% \usepackage[backend=biber,  	% Das Backend zum kompilieren der .bib-Datei
+% 			style=ieee, 		% Der Stil indem das Literaturverzeichnis angezeigt wird
+% 			citestyle=numeric,
+% 			urldate =comp] 	% Zitate im Text werden durchnumeriert und entsprechend im Verzeichnis geordnet
+% 			{biblatex}
+% \renewbibmacro*{author}{\printnames{author}} % Verhindert, dass gleiche Autorennamen hintereinander durch Striche ersetzt werden (ist im ieee-Style implementiert)
+
+%\addbibresource{Literatur/literatur.bib} % Pfad zur .bib-Datei
+
+
+% ---- Farbdefinitionen ----
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\definecolor{hellgrau}{rgb}{0.95,0.95,0.95}
+\definecolor{hellblau}{rgb}{0.8,0.8,0.8}
+
+
+% ---- DIVERSES ----
+\usepackage{pdfpages}		% PDF-Seiten im Anhang einbinden
+\raggedbottom				% SOLL BEI TWOSIDED VERHINDERN DASS ABSTÄNDE ZU GROß SIND
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{pgfplots.groupplots}
+\usetikzlibrary{patterns} %for patterns in bar plot
+\usetikzlibrary{spy}
+\usepackage{amssymb}
+% ======================== Optionale Pakete ===========================
+% an dieser Stelle können eigene Pakete eingebunden werden.
+% bereits vorhandene Pakete können bei Bedarf einkommentiert werden
+
+%\usepackage[official]{eurosym}  % Offizielles Euro-Zeichen
+
+%\usepackage{multirow}			 % Erlaubt es, innerhalb einer Tabelle mehrzeilige/spaltige Zellen zu erstellen
+
+%\usepackage{colortbl}   		 % Tabellellinien in anderen Farben
+
+%\usepackage{overpic}			 % Bilder mit anderen Bildern überlagern (Bspw. für Legenden)
+
+%\usepackage{pdflscape}		     % einzelne Seite im Querformat
+
+%\usepackage{listings}					% Führt Listings zur Darstellung von Code ein					
+%\renewcommand{\lstlistingname}{Programmcode}	% Ändert Titel der Listings
+
+\usepackage{pgfplots} % TICKZ einbinden (PGF)
+\pgfplotsset{compat=1.18}
+\usepackage{algorithm}	% Include Pseudocode, algorithmic
+\usepackage{algpseudocode}
+
+\ifthenelse{\equal{\Sprache}{0}}
+	{% Abbildung
+	\newcommand{\figref}[1]{Abb.~\ref{#1}}
+	% Gleichungs--Referenzen:
+	\renewcommand{\eqref}[1]{Gl.~(\ref{#1})}
+	}{}
+\ifthenelse{\equal{\Sprache}{1}}
+{% Abbildung
+	\newcommand{\figref}[1]{Fig.~\ref{#1}}
+	% Gleichungs--Referenzen:
+	\renewcommand{\eqref}[1]{Eq.~(\ref{#1})}
+}{}
+\newcommand{\tabref}[1]{Tab.~\ref{#1}}
+% Algorithmus --Referenzen: 
+\newcommand{\algoref}[1]{Alg.~\ref{#1}}
+% ==================================================================
+
+
+% ---- HYPERREF ---- !WICHTIG! - {hyperref} als letztes Paket laden
+\usepackage{hyperref}	% Verlinkung von farbigen Referenzen im Text, z.B. Verlinkung direkt zu einer Fußnote oder Literatur
+\hypersetup{
+  colorlinks=true,	% aktiviert farbige Referenzen
+  linkcolor=black,	% Farbe der Verlinkungen innerhalb des Textes, z.B. Kapitel, Fußnote etc.
+  citecolor=black,	% Farbe der Literatur-Refs
+  urlcolor=black,	% Farbe einer URL im Literaturverzeichnis
+  breaklinks=true,	% urls im Literaturverzeichnis umbrechen
+% pdfpagemode=None,	% PDF-Viewer startet ohne Inhaltsverzeichnis et.al.
+% pdfstartview=FitH % PDF-Viewer benutzt beim Start Seitenbreite des Bildschirms
+            }
+\usepackage{geometry}                               % Erlaubt das ändern des Layouts
+  \geometry{                                        % Layout des Dokuments (Muss angepasst werden!)
+            a4paper,                                % Papierformat
+            includeheadfoot,                        % Einfügen von Kopf und Fußzeile
+            inner=3cm,                             	% Innerer Rand
+            outer=2.5cm,                            % Äußerer Rand
+            top=1.5cm,                              % Höhe Kopfzeile
+            bottom=1.5cm,                           % Höhe Fußzeile
+            }       
+
+% Erstellen von SI-Einheiten, die in neueren Paketen nicht mehr verfügbar sind.
+\DeclareSIUnit\bar{bar}
+%\DeclareSIUnit\ohm{$Omega$}
+

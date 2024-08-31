@@ -1,0 +1,28 @@
+% !TeX root =../main.tex
+
+\begin{titlepage}
+%\thispagestyle{empty}
+\setlength{\voffset}{-1cm}
+\setlength{\footskip}{0pt}
+
+\vspace*{16cm}
+
+\begin{flushright}
+\VornameDesStudenten \ \NachnameDesStudenten \\[0.3cm]
+\Matrikelnummer \\[0.3cm]
+\Studiengang \\ [0.3cm]
+\ArtDerArbeit \\[0.3cm]
+\IEETNumber \\[0.3cm]
+\Abgabe \\[0.3cm]
+\ifthenelse{\equal{\Sprache}{0}} % Ändert die Bezeichnungen auf gemäß der Sprache auf Prüfer/Examiner bzw. Betreuer/Supervisor.
+				{
+Prüfer: Prof. Dr.-Ing. Christian Becker \\[0.3cm]
+\ifthenelse{\equal{\MScBSc}{2}}{Zweitprüfer: \Zweitpruefer \\[0.3cm]}{}
+Betreuer: \BetreuerE \ifthenelse{\equal{\BetreuerZ}{Betreuer 2}}{}{\text{,\BetreuerZ}} \\[0.3cm]}
+{
+Examiner: Prof. Dr.-Ing. Christian Becker \\[0.3cm]
+\ifthenelse{\equal{\MScBSc}{2}}{Zweitprüfer: \Zweitpruefer \\[0.3cm]}{}
+Supervisor: \BetreuerE \ifthenelse{\equal{\BetreuerZ}{Betreuer 2}}{}{\text{, \BetreuerZ}}
+}
+\end{flushright}
+\end{titlepage}

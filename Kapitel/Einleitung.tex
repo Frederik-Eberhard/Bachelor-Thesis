@@ -1,0 +1,66 @@
+% !TeX root =../main.tex
+
+\chapter{Einleitung} 
+\label{sec:intro}
+\todo[inline]{Introduction: What are SMPS, what are GaNFETs?, Why study loss in inductors}
+
+
+Es geht zunächst um die Gliederung der Abschlussarbeit und dann um die Anforderungen an das erste Kapitel, die Einleitung. 
+
+\section{Gliederung einer wissenschaftlichen Arbeit}
+Im Allgemeinen können Abschlussarbeiten, egal ob Studien-, Bachelor- oder Masterarbeiten in gleicherweise strukturiert und gegliedert werden. Dieser allgemeine Aufbau wird im Folgenden beschrieben. In Einzelfällen, d.h. bei speziellen Themen können auch leichte Anpassungen nötig sein.\par
+
+Formal gesehen hat jede wissenschaftliche Arbeit folgende Bestandteile, die Sie auch als generisches Inhaltsverzeichnis verstehen können:
+\begin{itemize}
+    \item[] 0a. Kurzzusammenfassung (Abstract)
+	\item[] 0b. Abkürzungen
+	\item[] 0c. Formelzeichen
+    \begin{enumerate}
+	    \item Einleitung
+	    \item Grundlagen
+	    \item Lösungs-/Modellierungs-/Implementierungsteil/Versuchsaufbau
+	    \item Anwendungsbeispiele, -szenarien, Messungen und Diskussion der Ergebnisse
+	    \item Zusammenfassung und (optionaler) Ausblick
+	    \item Literaturverzeichnis
+	\end{enumerate}
+\item[] Anhang/Anhänge
+\end{itemize}
+
+Grundlagenteil und Implementierungsteil können dabei, je nach Erfordernis, jeweils aus einem oder mehreren Kapiteln bestehen. Diese beiden Teile machen zusammen etwa zwei Drittel des Gesamtumfangs aus. Die Einleitung führt zur eigentlichen Arbeit hin. Sie wirkt, bildlich gesprochen, wie ein Trichter: alle für die Arbeit relevanten Problembereiche werden hineingesteckt, heraus kommt die fokussierte Themenstellung Ihrer Arbeit. Die Arbeit nimmt in ihrem Detaillierungsgrad zu. Lediglich in Zusammenfassung und Ausblick weitet sie sich wieder ins Allgemeine. Vorwärtsverweise sollten Sie möglichst vermeiden. Wenn Sie meinen, solche zu benötigen, untersuchen Sie, ob Sie sie nicht durch Umstellung umgehen können. Rückwärtsverweise sollten dagegen auftreten. Sie verankern den Grundlagenteil mit der Einleitung, die Implementierung mit den Grundlagen, Beispiele mit Grundlagen und Implementierung. Die Arbeit sollte auch einen geschlossenen Eindruck auf einer bestimmten Abstraktionsebene bieten, ohne dass ein Leser gezwungen ist, die gesamte Arbeit zu lesen. Es sollte daher möglich sein, nur die Einleitung, eventuell zusammen mit Zusammenfassung und Ausblick, zu lesen, um sich einen Überblick über die Ergebnisse der Arbeit zu verschaffen. Jemand, der sich nicht für die Implementierung interessiert, sollte mit Einleitung und Grundlagenteil einen detaillierten Einblick in die verwendeten Grundlagen und entwickelten Modelle Ihrer Arbeit gewinnen können, das Für und Wider der verschiedenen Entwurfsalternativen sehen sowie die Begründung für den ausgewählten Ansatz finden. Achten Sie darauf, dass im Implementierungsteil keine neuen Grundlagen vorgestellt oder gar neue Begriffe eingeführt werden. In einem solchen Fall deutet alles darauf hin, dass der Grundlagenteil unvollständig ist. Wer sich schließlich für die Güte der Implementierung interessiert oder Detailabläufe anhand beispielhafter Szenarien verstehen will, muss sicherlich die ganze Arbeit lesen.
+Im Folgenden sollen die einzelnen Abschnitte etwas detaillierter betrachtet werden. Dabei wird von einer "idealen" wissenschaftlichen Arbeit ausgegangen. "Ideal" bezieht sich dabei nicht nur auf Ihre Leistung, sondern auch auf das gestellte Thema, das entsprechend den dargelegten Punkten auch etwas hergeben muss. Versuchen Sie nicht, künstlich an Stellen etwas zu erzeugen, wo nichts zu holen ist.\newline
+
+\textit{0a. Kurzzusammenfassung}\par
+Die Kurzzusammenfassung ist vergleichbar mit Klappentexten bei wissenschaftlichen Büchern. Sie soll in wenigen Sätzen die Arbeit zusammenfassen und das Interesse des Lesers wecken, die ganze Arbeit zu lesen. 
+Die Kurzzusammenfassung soll von einem auf diesem Feld interessierten Forscher gelesen und verstanden werden können. Der Text soll dem Leser die Information geben, welches Problem mit welchen Lösungsansätzen behandelt wurde. Anschließend sollen die Kern-Ergebnisse der Arbeit in wenigen Sätzen zusammengefasst werden.
+
+Beachten Sie hierbei, dass die Problemstellung nicht ausführlich erklärt werden muss, sondern nur genannt wird. Gleiches gilt für die Lösungsansätze. Schlankheit und Präzision sind in diesem Abschnitt von zentraler Bedeutung. Zusätzlich ist ein „Abstract“, also die englische Version der Kurzzusammenfassung, je nach Länge auf einer separaten Seite oder auf derselben Seite wie die Kurzzusammenfassung zu erstellen (siehe Vorlage).\newline
+
+\textit{0b. Abkürzungen}\par
+Bei besonders langen Ausdrücken, die wiederholt genannt werden oder Ausdrücken mit bekannten Kurzformen, ist es möglich, Abkürzungen zu verwenden. Diese Abkürzungen sind in \verb|abkuerzung.tex| zu hinterlegen und entsprechend in den Text mit \verb|\ac{}| einzufügen. Durch diese Form der Referenzierung wird sichergestellt, dass der Ausdruck bei der ersten ein Erwähnung wie folgt dargestellt wird: \ac{WKA}. Jedoch bei jeder weiteren Erwähnung nur noch so: \ac{WKA} bzw. im Plural \acp{WKA}.  
+Abkürzungen sollten den Lesefluss nicht stören, sondern unterstützen. Gehen Sie daher sparsam mit Abkürzungen um.
+\newline
+
+
+
+\textit{0c. Formelzeichen}\par
+Bei der Verwendung von Formeln, sollten alle verwendeten Parameter und Indizes an dieser Stelle übersichtlich protokolliert werden.
+
+
+
+
+
+\section{Was steht in der Einleitung?}
+\label{sec: WsidE}
+Ziel der Einleitung ist es, zum eigentlichen Thema der Arbeit hinzuführen sowie dem Leser einen inhaltlichen Überblick über die Arbeit zu geben. Die Einleitung muss von jedem Elektrotechniker verstanden werden können. Abstraktionsniveau, Sprache usw. sind also entsprechend zu wählen.
+Fangen Sie aber nicht bei zu grundlegend Dingen an. Als Anhaltspunkt können Sie alles voraussetzen, was in den Pflichtveranstaltungen Ihres Studiums behandelt wurde. Die über den Satz an "Grundbegriffen" hinausgehende Fachsprache muss eingeführt werden. Die verschiedenen "Quellbereiche" für Probleme und Lösungsansätze können in verschiedenen Abschnitten (Unterkapiteln) dargelegt werden. Sie spannen mit der Einleitung den Raum auf, in dem Sie sich im Grundlagenteil Ihrer Arbeit bewegen. Hieraus muss die fokussierte Problemstellung Ihrer Arbeit erwachsen. Belegen Sie, wenn möglich, dass Sie ein wichtiges Problem angehen (neuer Algorithmus, wirtschaftlichere Lösung, Qualität der Lösung, Verbesserung der Umweltverträglichkeit einer Lösung). Geben Sie die Highlights Ihrer Arbeit an. Die Einleitung muss für den Leser die Frage beantworten, ob sich für ihn das Lesen weiterer Kapitel oder der gesamten Arbeit lohnen könnte. Im Überblick über den Rest der Arbeit sollten die prinzipielle Vorgehensweise, die Highlights usw. sichtbar werden. Sie geben dem Leser damit eine Orientierung, wo er die ihn eventuell interessierenden Dinge findet. Üblich ist, dabei kapitelweise vorzugehen. Der "rote Faden" Ihrer Arbeit sollte dann jedem Leser offensichtlich werden.
+Zusammenfassend ist es folglich ratsam, die Einleitung in drei Sinnabschnitte zu unterteilen:
+\begin{itemize}
+    \item{\textbf{Einführung in die Problematik } $\boldsymbol{\rightarrow{}}$   Hier wird herausgearbeitet, warum die Themenstellung es wert ist, sie zu untersuchen und gleichzeitig eine Einbettung in den energietechnischen Kontext vollzogen.}
+    \item{ \textbf{Aktueller Stand der Literatur } $\boldsymbol{\rightarrow{}}$  Hier wird herausgearbeitet, was der aktuelle Stand der Literatur auf dem Themengebiet ist (inkl. Nennung von Quellen) und deutlich aufgezeigt, wie sich die vorliegende Arbeit davon abgrenzt und was der Mehrwert („neu“) an der eigenen Arbeit ist.}
+    \item{\textbf{Ziel und Aufbau der Arbeit} $\boldsymbol{\rightarrow{}}$  Hier wird das Ziel der Arbeit klar formuliert und im weiteren der Aufbau der Arbeit (kapitelweise) beschrieben. Dem Leser soll hierdurch der Zusammenhang zwischen den Kapiteln sowie zusätzlich auch der rote Faden deutlich werden (und zusätzlich auch der rote Faden)}
+\end{itemize}
+
+\SI{}{\ohm}
+
+
+

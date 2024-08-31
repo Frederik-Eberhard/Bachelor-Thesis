@@ -1,0 +1,50 @@
+% !TeX root =../main.tex
+%Bitte hier die Daten anpassen
+
+\newcommand{\MScBSc}{0} % 0=Bachelorarbeit 1=Projektarbeit 2=Masterarbeit
+\newcommand{\Sprache}{1} % 0=Deutsch 1=Englisch 
+% Wenn die Sprache geändert wird muss eventuell zweimal kompiliert werden um eine auftretende Fehlermeldung zu beheben.
+
+\newcommand{\MitDanksagung}{0} % 0 = Nein, 1 = Ja, die Danksagung ist optional
+
+\newcommand{\VornameDesStudenten}{Frederik}
+\newcommand{\NachnameDesStudenten}{Eberhard}
+\newcommand{\Matrikelnummer}{521446}
+\newcommand{\Studiengang}{Student der Elektrotechnik} %{M.Sc. Elektrotechnik / ETMS} %bitte in diesem Stil lassen!
+\newcommand{\BetreuerE}{Thomas William Walsh}
+\newcommand{\BetreuerZ}{Leon Maximilian Helmich} % Nur falls einen zweiten Betreuer gibt ändern, sonst unveränert lassen
+\newcommand{\IEETNumber}{Num} % {Num} durch Nummer der Arbeit ersetzen 
+\newcommand{\Abgabe}{September 2024}
+\newcommand{\Zweitpruefer}{Zweitprüfer} % Nur bei Masterarbeiten einzutragen
+\newcommand{\Ort}{Harburg} % Bitte Wohnort eintragen
+%Hier den Titel der Arbeit eintragen
+\newcommand{\DeutscherTitelDerArbeit}{
+		  \large
+          \normalfont \bfseries
+           Schätzung der AC- und DC-Verluste in den Induktivitäten eines Schaltnetzteils\\
+          }
+\newcommand{\EnglischerTitelDerArbeit}{
+	\small %normalsize
+	\normalfont \bfseries
+    Estimating AC and DC losses in the inductors of a switch mode power supply\\
+}
+
+% Hier braucht keine Änderung vorgenommen werden.
+\newcommand{\ArtDerArbeit}{\ifthenelse{\equal{\MScBSc}{0}}
+			{\ifthenelse{\equal{\Sprache}{0}}
+				{Bachelorarbeit}{}
+			\ifthenelse{\equal{\Sprache}{1}}
+			{Bachelor's Thesis}{}}
+		{\ifthenelse{\equal{\MScBSc}{1}}
+			{\ifthenelse{\equal{\Sprache}{0}}
+				{Projektarbeit}{}
+				\ifthenelse{\equal{\Sprache}{1}}
+				{Project Thesis}{}
+			}{}
+		\ifthenelse{\equal{\MScBSc}{2}}
+			{\ifthenelse{\equal{\Sprache}{0}}
+				{{Masterarbeit}}{}
+				\ifthenelse{\equal{\Sprache}{1}}
+				{{Master's Thesis}}{}
+			}{}}}
+	
